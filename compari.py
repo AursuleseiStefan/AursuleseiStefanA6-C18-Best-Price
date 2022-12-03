@@ -1,7 +1,8 @@
 import requests as req
 from bs4 import BeautifulSoup
 import sys
-
+import json
+import re
 
 def functiecuargumente():
     if len(sys.argv)<2:
@@ -10,8 +11,11 @@ def functiecuargumente():
 
 
 def functieptcrawl():
+    listadedictionare=[]
+    
     if functiecuargumente():
         vectordeargumente=[]
+        numecomplet=""
         for i in range(1,len(sys.argv)):
             vectordeargumente.append(sys.argv[i])
         vectcupretur=[]
@@ -47,11 +51,39 @@ def functieptcrawl():
             # for link in d.findAll('span' ,{'data-akjl':'Price||Price||1'}):
             #     vectcupretur.append(link.text)
             #     print(link.text)
-            sorted(vectcupretur)
-            print(bsup.title.string)     
-        print (vectcupretur)
+            for i in range(0,len(vectcupretur)):
+                vectorfararon.append((re.split(r"[\s]+[A-Z]+",vectcupretur[i])[0]))
+                vectorfararon[i]=vectorfararon[i].replace(",", ".")
+                vectorfararon[i]=vectorfararon[i].replace(" ","")
+                vectorfararon[i]=float(vectorfararon[i])
+            #print(vectorfararon)
+            vectorfararon.sort()
+            #print(bsup.title.string)
+            #print(numecomplet)
+
+            #print(len(vectcupretur))
+            dictionarcutoate["nume"]=numecomplet
+            dictionarcutoate["cel mai mic pret"]=str(vectorfararon[0])+" Ron"
+            dictionarcutoate["cel mai mare pret"]=str(vectorfararon[-1])+" Ron"
+            dictionarcutoate["oferte"]=len(vectcupretur)
+            numecomplet=""
+            
+            listadedictionare.append(dictionarcutoate)
+        #print(vectcupretur)    
+        #print(listadedictionare)
+        print(listadedictionare)    
+        functiedepusinjson(listadedictionare)
+            
+                 
+        #print (listadedictionare)
         #print (vectordeargumente)
 
+
+def functiedepusinjson(listadedicti):
+    json_object = json.dumps(listadedicti, indent=2) #indent ca nu il puna pe tot in linie
+    
+    with open("sample3.json", "w") as outfile:
+        outfile.write(json_object)
 
 if __name__=='__main__':
     #print(functiecuargumente())
