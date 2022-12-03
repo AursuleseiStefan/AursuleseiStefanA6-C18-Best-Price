@@ -46,10 +46,10 @@ def functieptcrawl():
             # Cautam in site din toate headerele cu propietatile mentionate numele produsului
             # atribuind unei variabile "numecomplet" toate spanurile cu itemprop name
             # structura site-ului avand numele telefonului cu modelul separate
-            # am pus spatiu intre deoarele nume complet ar fi fost : "NumeprodusModelul"
+            # am pus spatiu intre ele deoarece nume complet ar fi fost : "NumeprodusModelul"
             for link in c.findAll('span' ,{'itemprop':'name'}):
                 numecomplet=numecomplet + " " + link.text
-            # Am luat toate span-urile din div urile de mai sus atrbuit variabilelor "a","b" si respectiv "c"
+            # Am luat toate span-urile din div urile de mai sus atribuit variabilelor "a","b" si respectiv "c"
             # si am adaugat in vector toate preturile din bloc-urile:
             # "Ofertele noastre","Alege oferte pentru produsul"si respectiv"Mai multe oferte"
             
@@ -66,7 +66,7 @@ def functieptcrawl():
                 vectcupretur.append(link.text)
             
             # Acest for are scopul de a transforma textul din "vectcupretur" intr-un float
-            # astfel incat sa putem sorta corect preturile pentru a putea le putea folosi ulterior
+            # astfel incat sa putem sorta corect preturile pentru a le putea folosi ulterior
             for i in range(0,len(vectcupretur)):
                 # Am vrut sa creez un vector in care sa avem numai cifre
                 # Structura site-ului returneaza un pret de forma "1 000,00 RON"
@@ -87,7 +87,7 @@ def functieptcrawl():
             # Am creat un dictionar gol la linia de cod 33 in care
             # Atribuim unui "nume" numele produsului luat din for ul de la linia de cod 50
             dictionarcutoate["nume"] = numecomplet
-            # Atribum cheiilor "cel mai mic pret" si "cel mai mare pret"
+            # Atribum cheilor "cel mai mic pret" si "cel mai mare pret"
             # prima si ultima valoare din vectorul sortat adaugand si currency ul respectiv
             # L-am transformat in string ca sa pot lipi de currency
             dictionarcutoate["cel mai mic pret"] = str(vectorfararon[0]) + " Ron"
