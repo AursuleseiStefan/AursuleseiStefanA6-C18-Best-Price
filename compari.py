@@ -16,14 +16,37 @@ def functieptcrawl():
             vectordeargumente.append(sys.argv[i])
         vectcupretur=[]
         for url in vectordeargumente:
+            vectcupretur=[]
+            dictionarcutoate={}
+            vectorfararon=[]
         #print (vectordeargumente)
         #url="https://www.compari.ro/telefoane-mobile-c3277/samsung/galaxy-z-fold4-5g-256gb-12gb-ram-dual-f936-p841779084/"
             resp = req.get(url)
             bsup=BeautifulSoup(resp.text,"lxml")
             a=bsup.find('div' ,{'id':'offer-block-paying'})
+            b=bsup.find('div' ,{'id':'offer-block-promoted'})
+            c=bsup.find('h1' ,{'class':'hidden-xs'})
+            #d=bsup.find('div' ,{'class':'row-price'})
+            d=bsup.find('div' ,{'id':'offer-block-free'})
+            #NUMELE PRODUSULUI
+            for link in c.findAll('span',{'itemprop':'name'}):
+                numecomplet=numecomplet+" "+link.text
             # b=bsup.find('span' ,{'data-akjl':'Price||Price||1'})
+            #OFERTELE NOASTRE...
             for link in a.findAll('span' ,{'data-akjl':'Price||Price||1'}):
                 vectcupretur.append(link.text)
+            
+            #OFERTE EVIDENTIATE
+            for link in b.findAll('span' ,{'data-akjl':'Price||Price||1'}):
+                vectcupretur.append(link.text)
+            
+            for link in d.findAll('span' ,{'data-akjl':'Price||Price||1'}):
+                vectcupretur.append(link.text)
+            
+            # #OFERTELE NOASTRE POT FI ACHIZITIONATE DE PE COMPARI.RO##se afla in OFERTELE NOASTRE
+            # for link in d.findAll('span' ,{'data-akjl':'Price||Price||1'}):
+            #     vectcupretur.append(link.text)
+            #     print(link.text)
             sorted(vectcupretur)
             print(bsup.title.string)     
         print (vectcupretur)
