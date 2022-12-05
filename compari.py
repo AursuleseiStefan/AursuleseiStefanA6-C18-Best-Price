@@ -1,6 +1,5 @@
 """ URL utile pentru a rula rapid proiectul:
  https://www.compari.ro/telefoane-mobile-c3277/samsung/galaxy-z-fold4-5g-256gb-12gb-ram-dual-f936-p841779084/ 
- https://www.compari.ro/telefoane-mobile-c3277/samsung/galaxy-s22-ultra-5g-256gb-12gb-ram-dual-sm-s908b-p766823799/
  https://www.compari.ro/telefoane-mobile-c3277/samsung/galaxy-s22-5g-128gb-8gb-ram-dual-sm-s901b-p766823406/
  https://www.compari.ro/telefoane-mobile-c3277/samsung/galaxy-z-flip4-5g-128gb-8gb-ram-dual-f721-p841833855/
  https://www.compari.ro/frigidere-congelatoare-c3168/heinner/hc-v268f-p450754938/
